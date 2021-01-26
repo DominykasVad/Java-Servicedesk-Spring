@@ -2,10 +2,13 @@ package com.company.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,9 +29,6 @@ public class UserEntity {
     @NotBlank
     private String password;
 
-    @Transient
-    private String repeatedPassword;
-
     @Column(name = "name")
     private String name;
 
@@ -41,5 +41,13 @@ public class UserEntity {
 
     @Column(name = "phome", nullable = false, unique = true, length = 50)
     private String phone;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 }
