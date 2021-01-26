@@ -30,7 +30,6 @@ public class CustomerEntity {
     @Column(name = "address",nullable = false)
     private String address;
 
-    @Column(name = "company")
     @ManyToOne
     private CompanyEntity company;
 

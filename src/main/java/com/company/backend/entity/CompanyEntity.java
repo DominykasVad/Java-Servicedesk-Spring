@@ -21,7 +21,7 @@ public class CompanyEntity {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
     private Set<CustomerEntity> employees;
 
 }
