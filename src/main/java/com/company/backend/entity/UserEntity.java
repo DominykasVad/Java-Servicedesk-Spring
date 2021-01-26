@@ -39,7 +39,7 @@ public class UserEntity {
     @Size(min = 3, max = 254)
     private String email;
 
-    @Column(name = "phome", nullable = false, unique = true, length = 50)
+    @Column(name = "phone", nullable = false, unique = true, length = 50)
     private String phone;
 
     @CreationTimestamp
