@@ -22,7 +22,10 @@ public class Company {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.REMOVE)
-    private Set<CustomerEntity> employees;
+    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
+    private Set<User> employees;
+
+    @OneToMany(mappedBy = "company_id", cascade = CascadeType.PERSIST)
+    private Set<ServiceRequest> serviceRequests;
 
 }
