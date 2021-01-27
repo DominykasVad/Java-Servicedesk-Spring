@@ -25,7 +25,7 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
     private Set<User> employees;
 
-    @OneToMany(mappedBy = "company_id", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
     private Set<ServiceRequest> serviceRequests;
 
 }
