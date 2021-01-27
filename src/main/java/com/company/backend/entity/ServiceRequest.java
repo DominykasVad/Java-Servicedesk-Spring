@@ -42,7 +42,7 @@ public class ServiceRequest {
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "created_at")
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
 }
