@@ -28,4 +28,8 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
     private Set<ServiceRequest> serviceRequests;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ou_id")
+    private OrganizationalUnit organizationalUnit;
+
 }
