@@ -43,15 +43,6 @@ public class User {
     @Column(name = "phone", nullable = false, unique = true, length = 50)
     private String phone;
 
-    @ManyToOne
-    private Company company;
-
-    @OneToMany(mappedBy = "owner_id", cascade = CascadeType.PERSIST)
-    private Set<ServiceRequest> serviceRequests;
-
-    @OneToMany(mappedBy = "reported_by", cascade = CascadeType.PERSIST)
-    private Set<ServiceRequest> reportedServiceRequests;
-
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
