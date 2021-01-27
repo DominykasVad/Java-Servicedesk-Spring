@@ -24,7 +24,7 @@ public class CustomerEntity {
     @Size(min = 3, max = 254)
     private String email;
 
-    @Column(name = "phome", nullable = false, length = 50)
+    @Column(name = "phone", nullable = false, length = 50)
     private String phone;
 
     @Column(name = "address",nullable = false)
