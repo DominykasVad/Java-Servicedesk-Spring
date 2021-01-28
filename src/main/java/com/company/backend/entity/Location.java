@@ -18,7 +18,7 @@ public class Location {
 
     @ManyToOne
     @JoinColumn(name = "ou_id")
-    OrganizationalUnit organizationalUnit;
+    private OrganizationalUnit organizationalUnit;
 
     @Column(name = "name", nullable = false)
     private String name;
