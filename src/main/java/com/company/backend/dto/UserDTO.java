@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +28,11 @@ public class UserDTO {
 
     private String phone;
 
-    private CompanyDTO company;
+    private String companyName;
+
+    private Set<UserServiceRequestDTO> serviceRequests;
+
+    private Set<UserServiceRequestDTO> reportedServiceRequests;
 
     private LocalDateTime createdAt;
 

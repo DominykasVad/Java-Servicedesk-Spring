@@ -19,11 +19,11 @@ public class ServiceRequestDTO {
 
     private String description;
 
-    private UserDTO owner;
+    private String ownerUsername;
 
-    private CompanyDTO company;
+    private String companyName;
 
-    private UserDTO reportedBy;
+    private String  reportedByUsername;
 
     private LocalDateTime createdAt;
 
