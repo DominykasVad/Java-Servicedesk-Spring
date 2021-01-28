@@ -12,11 +12,11 @@ public class ServiceRequestMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ServiceRequestDTO convertServiceRequestToDTO(ServiceRequest serviceRequest) {
+    public ServiceRequestDTO convertServiceRequestEntityToDTO(ServiceRequest serviceRequest) {
         return modelMapper.map(serviceRequest, ServiceRequestDTO.class);
     }
 
-    public ServiceRequest convertServiceRequestToEntity(ServiceRequestDTO serviceRequestDTO) {
+    public ServiceRequest convertServiceRequestDtoToEntity(ServiceRequestDTO serviceRequestDTO) {
         return modelMapper.map(serviceRequestDTO, ServiceRequest.class);
     }
 }
