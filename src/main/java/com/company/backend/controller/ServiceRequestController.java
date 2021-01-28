@@ -1,12 +1,13 @@
 package com.company.backend.controller;
 
+import com.company.backend.dto.NewServiceRequestDTO;
 import com.company.backend.dto.ServiceRequestDTO;
 import com.company.backend.service.ServiceRequestService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,6 +28,13 @@ public class ServiceRequestController {
     @GetMapping("/{id}")
     public ServiceRequestDTO getServiceRequest(@PathVariable Long id) {
         return serviceRequestService.getServiceRequestById(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<NewServiceRequestDTO> addServiceRequest(@RequestBody @Valid NewServiceRequestDTO newServiceRequestDTO) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(serviceRequestService.createServiceRequest(newServiceRequestDTO));
     }
 
 }
