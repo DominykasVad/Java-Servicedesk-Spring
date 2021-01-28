@@ -3,7 +3,7 @@ package com.company.backend.exeption;
 public class EntityNotFoundException extends RuntimeException {
 
     public EntityNotFoundException(Long id) {
-        super("Entity with id: " + id + " was not found!");
+        super(String.format("Entity with ID: %d was not found!", id));
     }
 
 }
