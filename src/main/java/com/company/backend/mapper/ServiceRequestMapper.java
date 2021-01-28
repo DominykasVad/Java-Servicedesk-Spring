@@ -1,5 +1,6 @@
 package com.company.backend.mapper;
 
+import com.company.backend.dto.NewServiceRequestDTO;
 import com.company.backend.dto.ServiceRequestDTO;
 import com.company.backend.entity.ServiceRequest;
 import org.modelmapper.ModelMapper;
@@ -18,5 +19,9 @@ public class ServiceRequestMapper {
 
     public ServiceRequest convertServiceRequestDtoToEntity(ServiceRequestDTO serviceRequestDTO) {
         return modelMapper.map(serviceRequestDTO, ServiceRequest.class);
+    }
+
+    public ServiceRequest convertNewServiceRequestDtoToEntity(NewServiceRequestDTO newServiceRequestDTO) {
+        return modelMapper.map(newServiceRequestDTO, ServiceRequest.class);
     }
 }
