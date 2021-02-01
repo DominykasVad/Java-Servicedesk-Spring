@@ -18,8 +18,6 @@ public class UserDTO {
 
     private String username;
 
-    private String password;
-
     private String name;
 
     private String surname;
@@ -30,9 +28,9 @@ public class UserDTO {
 
     private String companyName;
 
-    private Set<UserServiceRequestDTO> serviceRequests;
+    private Set<RoleDTO> roles;
 
-    private Set<UserServiceRequestDTO> reportedServiceRequests;
+    private Set<UserServiceRequestDTO> serviceRequests;
 
     private LocalDateTime createdAt;
 
