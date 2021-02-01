@@ -31,6 +31,5 @@ public class UserController {
     @PostMapping("/login")
     public UserDTO user(@AuthenticationPrincipal User user) {
         return userService.getUserDtoById(user.getId());
-//        return user;
     }
 }
