@@ -16,7 +16,7 @@ import java.util.Set;
 public class OrganizationalUnit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY  )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "ou_name", nullable = false, unique = true)
@@ -30,7 +30,6 @@ public class OrganizationalUnit {
 
     @OneToMany(mappedBy = "organizationalUnit", cascade = CascadeType.PERSIST)
     private Set<ConfigurationItem> configurationItems;
-
 
     @CreationTimestamp
     @Column(name = "created_at")
