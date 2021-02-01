@@ -1,11 +1,10 @@
 package com.company.backend.controller;
 
 import com.company.backend.dto.UserDTO;
+import com.company.backend.entity.User;
 import com.company.backend.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +28,9 @@ public class UserController {
         return userService.getUserDtoById(id);
     }
 
+    @PostMapping("/login")
+    public UserDTO user(@AuthenticationPrincipal User user) {
+        return userService.getUserDtoById(user.getId());
+//        return user;
+    }
 }
