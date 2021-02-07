@@ -12,7 +12,6 @@ import com.company.backend.mapper.ServiceRequestMapper;
 import com.company.backend.repository.ServiceRequestRepository;
 import com.company.backend.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.service.ServiceRegistry;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,10 +23,10 @@ import java.security.Principal;
 @Service
 public class ServiceRequestService {
 
-    private ServiceRequestRepository serviceRequestRepository;
-    private ServiceRequestMapper serviceRequestMapper;
+    private final ServiceRequestRepository serviceRequestRepository;
+    private final ServiceRequestMapper serviceRequestMapper;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public ServiceRequestService(ServiceRequestRepository serviceRequestRepository, ServiceRequestMapper serviceRequestMapper, UserRepository userRepository) {
         this.serviceRequestRepository = serviceRequestRepository;

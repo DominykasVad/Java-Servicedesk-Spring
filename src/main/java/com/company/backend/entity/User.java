@@ -58,9 +58,9 @@ public class User implements UserDetails {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name="User_Roles",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "role_id") }
+            name = "User_Roles",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
     private Set<Role> roles;
 

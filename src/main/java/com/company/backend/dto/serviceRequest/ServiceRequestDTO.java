@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +23,7 @@ public class ServiceRequestDTO {
 
     private String organizationalUnitName;
 
-    private String  reportedByUsername;
+    private String reportedByUsername;
 
     private Long serviceRequestStatusId;
 

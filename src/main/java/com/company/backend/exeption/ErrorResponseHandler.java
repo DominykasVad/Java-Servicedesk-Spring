@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 @Getter
 public class ErrorResponseHandler {
 
-    private String error;
-    private LocalDateTime timestamp;
+    private final String error;
+    private final LocalDateTime timestamp;
 
     public ErrorResponseHandler(String error) {
         this.error = error;

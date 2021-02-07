@@ -22,7 +22,7 @@ import static com.company.backend.security.SecurityConstants.*;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtProvider jwtProvider) {
         super(authenticationManager);

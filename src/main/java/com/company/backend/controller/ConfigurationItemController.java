@@ -18,7 +18,7 @@ import java.util.Optional;
 @RequestMapping("/ci")
 public class ConfigurationItemController {
 
-    private ConfigurationItemService configurationItemService;
+    private final ConfigurationItemService configurationItemService;
 
     public ConfigurationItemController(ConfigurationItemService configurationItemService) {
         this.configurationItemService = configurationItemService;

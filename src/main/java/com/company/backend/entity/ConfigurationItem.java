@@ -51,9 +51,9 @@ public class ConfigurationItem {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name="ci_sr",
-            joinColumns = { @JoinColumn(name = "ci_id") },
-            inverseJoinColumns = { @JoinColumn(name = "sr_id") }
+            name = "ci_sr",
+            joinColumns = {@JoinColumn(name = "ci_id")},
+            inverseJoinColumns = {@JoinColumn(name = "sr_id")}
     )
     private Set<ServiceRequest> serviceRequests;
 

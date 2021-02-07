@@ -19,7 +19,7 @@ import java.util.Optional;
 @RequestMapping("/sr")
 public class ServiceRequestController {
 
-    private ServiceRequestService serviceRequestService;
+    private final ServiceRequestService serviceRequestService;
 
     public ServiceRequestController(ServiceRequestService serviceRequestService) {
         this.serviceRequestService = serviceRequestService;

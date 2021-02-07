@@ -17,7 +17,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    private JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
 
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager, JwtProvider jwtProvider) {
         super(authenticationManager);
