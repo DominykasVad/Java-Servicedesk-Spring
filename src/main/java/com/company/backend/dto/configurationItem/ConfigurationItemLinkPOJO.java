@@ -1,4 +1,4 @@
-package com.company.backend.dto.ConfigurationItem;
+package com.company.backend.dto.configurationItem;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,5 +1,6 @@
-package com.company.backend.dto;
+package com.company.backend.dto.location;
 
+import com.company.backend.dto.organizationalUnit.OrganizationalUnitDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

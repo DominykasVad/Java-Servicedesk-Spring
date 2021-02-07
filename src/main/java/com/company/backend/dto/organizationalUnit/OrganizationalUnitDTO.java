@@ -1,4 +1,4 @@
-package com.company.backend.dto.ConfigurationItem;
+package com.company.backend.dto.organizationalUnit;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class ConfigurationItemStatusDTO {
+public class OrganizationalUnitDTO {
 
     private Long id;
 

@@ -1,6 +1,6 @@
 package com.company.backend.controller;
 
-import com.company.backend.dto.User.*;
+import com.company.backend.dto.user.*;
 import com.company.backend.entity.User;
 import com.company.backend.service.UserService;
 import org.springframework.http.HttpStatus;

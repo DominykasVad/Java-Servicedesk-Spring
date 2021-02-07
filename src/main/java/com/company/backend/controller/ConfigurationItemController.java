@@ -1,9 +1,9 @@
 package com.company.backend.controller;
 
-import com.company.backend.dto.ConfigurationItem.ConfigurationItemDTO;
-import com.company.backend.dto.ConfigurationItem.ConfigurationItemLinkPOJO;
-import com.company.backend.dto.ConfigurationItem.NewConfigurationItemDTO;
-import com.company.backend.dto.ConfigurationItem.UpdateConfigurationItemDTO;
+import com.company.backend.dto.configurationItem.ConfigurationItemDTO;
+import com.company.backend.dto.configurationItem.ConfigurationItemLinkPOJO;
+import com.company.backend.dto.configurationItem.NewConfigurationItemDTO;
+import com.company.backend.dto.configurationItem.UpdateConfigurationItemDTO;
 import com.company.backend.service.ConfigurationItemService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
