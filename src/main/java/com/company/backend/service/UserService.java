@@ -9,6 +9,7 @@ import com.company.backend.mapper.UserMapper;
 import com.company.backend.repository.RoleRepository;
 import com.company.backend.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -46,6 +47,11 @@ public class UserService implements UserDetailsService {
         return userMapper.convertUserEntityToDTO(user);
     }
 
+    public UserLoginDTO getUserLoginDtoById(Long id) {
+        User user = userRepository.findUserByIdWithRole(id).orElseThrow(() -> new EntityNotFoundException(id));
+        return userMapper.convertUserEntityToUserLoginDTO(user);
+    }
+
     public List<UserDTO> getAllUsers() {
         return userRepository.findAllUsersWithRole().stream()
                 .map(userMapper::convertUserEntityToDTO)
@@ -76,21 +82,24 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public UserDTO createUser(NewUserDTO newUserDTO) {
         User newUser = userMapper.convertNewUserDtoToEntity(newUserDTO);
-        Role defaultRole = roleRepository.findById(2L).orElseThrow(() -> new EntityNotFoundException(2L));
+        Role role = roleRepository.findById(newUserDTO.getRole()).orElseThrow(() -> new EntityNotFoundException(newUserDTO.getRole()));
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-        newUser.setRoles(Set.of(defaultRole));
+        newUser.setRoles(Set.of(role));
         User savedUser = userRepository.save(newUser);
         return userMapper.convertUserEntityToDTO(savedUser);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public UserDTO updateUser(UpdateUserDTO updateUserDTO) {
         User updateServiceRequest = userMapper.convertUpdateUserDtoToEntity(updateUserDTO);
         User savedServiceRequest = userRepository.save(updateServiceRequest);
         return userMapper.convertUserEntityToDTO(savedServiceRequest);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(Long id) {
         log.warn(String.format("User ID: %s Deleted User ID: %s", 1, id));
         userRepository.deleteById(id);
