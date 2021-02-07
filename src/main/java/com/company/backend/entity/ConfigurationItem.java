@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -42,11 +43,19 @@ public class ConfigurationItem {
 
     @ManyToOne
     @JoinColumn(name = "status")
-    private Status status;
+    private ConfigurationItemStatus configurationItemStatus;
 
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location currentLocation;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="ci_sr",
+            joinColumns = { @JoinColumn(name = "ci_id") },
+            inverseJoinColumns = { @JoinColumn(name = "sr_id") }
+    )
+    private Set<ServiceRequest> serviceRequests;
 
     @CreationTimestamp
     @Column(name = "created_at")

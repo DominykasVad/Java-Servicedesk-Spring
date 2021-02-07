@@ -12,8 +12,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "status")
-public class Status {
+@Table(name = "configuration_item_status")
+public class ConfigurationItemStatus {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Status {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "status", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "configurationItemStatus", cascade = CascadeType.PERSIST)
     private Set<ConfigurationItem> configurationItems;
 
     @CreationTimestamp
