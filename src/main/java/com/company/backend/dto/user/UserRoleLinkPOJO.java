@@ -1,18 +1,18 @@
-package com.company.backend.dto;
+package com.company.backend.dto.user;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.Getter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class RoleDTO {
+public class UserRoleLinkPOJO {
 
     private Long id;
 
-    private String roleName;
+    private Long roleId;
 
 }

@@ -1,5 +1,6 @@
-package com.company.backend.dto;
+package com.company.backend.dto.user;
 
+import com.company.backend.dto.serviceRequest.UserServiceRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,7 @@ public class UserDTO {
 
     private String phone;
 
-    private String companyName;
+    private String organizationalUnitName;
 
     private Set<RoleDTO> roles;
 
