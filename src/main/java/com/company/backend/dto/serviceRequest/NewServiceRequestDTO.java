@@ -1,4 +1,4 @@
-package com.company.backend.dto;
+package com.company.backend.dto.serviceRequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +21,6 @@ public class NewServiceRequestDTO {
     @NotEmpty
     private String description;
 
-    private Long companyId;
+    private Long organizationalUnitId;
 
 }

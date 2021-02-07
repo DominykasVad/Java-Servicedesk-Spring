@@ -1,4 +1,4 @@
-package com.company.backend.dto;
+package com.company.backend.dto.serviceRequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,9 +19,11 @@ public class UserServiceRequestDTO {
 
     private String ownerUsername;
 
-    private String companyName;
+    private String organizationalUnitName;
 
     private String reportedByUsername;
+
+    private String serviceRequestStatusName;
 
     private LocalDateTime createdAt;
 

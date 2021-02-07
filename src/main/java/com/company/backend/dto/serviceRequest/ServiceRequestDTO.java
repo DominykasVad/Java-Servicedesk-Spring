@@ -1,4 +1,4 @@
-package com.company.backend.dto;
+package com.company.backend.dto.serviceRequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,9 +22,13 @@ public class ServiceRequestDTO {
 
     private String ownerUsername;
 
-    private String companyName;
+    private String organizationalUnitName;
 
     private String  reportedByUsername;
+
+    private Long serviceRequestStatusId;
+
+    private String serviceRequestStatusName;
 
     private LocalDateTime createdAt;
 
