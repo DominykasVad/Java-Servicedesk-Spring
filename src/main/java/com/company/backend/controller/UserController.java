@@ -32,19 +32,19 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public UserDTO user(@AuthenticationPrincipal User user) {
-        return userService.getUserDtoById(user.getId());
+    public UserLoginDTO user(@AuthenticationPrincipal User user) {
+        return userService.getUserLoginDtoById(user.getId());
     }
 
     @PostMapping("/add-role")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addRoleToUser(@RequestBody UserRoleLinkPOJO userRoleLinkPOJO) {
+    public void addRoleToUser(@RequestBody @Valid UserRoleLinkPOJO userRoleLinkPOJO) {
         userService.addRoleToUser(userRoleLinkPOJO);
     }
 
     @PostMapping("/remove-role")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeRoleFromUser(@RequestBody UserRoleLinkPOJO userRoleLinkPOJO) {
+    public void removeRoleFromUser(@RequestBody @Valid UserRoleLinkPOJO userRoleLinkPOJO) {
         userService.removeRoleFromUser(userRoleLinkPOJO);
     }
 

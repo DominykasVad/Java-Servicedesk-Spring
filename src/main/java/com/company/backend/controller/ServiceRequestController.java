@@ -1,8 +1,9 @@
 package com.company.backend.controller;
 
-import com.company.backend.dto.serviceRequest.UpdateServiceRequestDTO;
 import com.company.backend.dto.serviceRequest.NewServiceRequestDTO;
 import com.company.backend.dto.serviceRequest.ServiceRequestDTO;
+import com.company.backend.dto.serviceRequest.ServiceRequestOwnershipPOJO;
+import com.company.backend.dto.serviceRequest.UpdateServiceRequestDTO;
 import com.company.backend.service.ServiceRequestService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Optional;
 
 @RestController
@@ -37,10 +39,16 @@ public class ServiceRequestController {
     }
 
     @PostMapping
-    public ResponseEntity<ServiceRequestDTO> addServiceRequest(@RequestBody @Valid NewServiceRequestDTO newServiceRequestDTO) {
+    public ResponseEntity<ServiceRequestDTO> addServiceRequest(@RequestBody @Valid NewServiceRequestDTO newServiceRequestDTO, Principal principal) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(serviceRequestService.createServiceRequest(newServiceRequestDTO));
+                .body(serviceRequestService.createServiceRequest(newServiceRequestDTO, principal));
+    }
+
+    @PostMapping("/take-ownership")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void serviceRequestTakeOwnership(@RequestBody @Valid ServiceRequestOwnershipPOJO serviceRequestOwnershipPOJO, Principal principal) {
+        serviceRequestService.serviceRequestTakeOwnership(serviceRequestOwnershipPOJO, principal);
     }
 
     @PutMapping
