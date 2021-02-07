@@ -47,7 +47,8 @@ public class User implements UserDetails {
     private String phone;
 
     @ManyToOne
-    private Company company;
+    @JoinColumn(name = "ou_id")
+    private OrganizationalUnit organizationalUnit;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private Set<ServiceRequest> serviceRequests;

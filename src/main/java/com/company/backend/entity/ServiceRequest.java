@@ -21,8 +21,7 @@ public class ServiceRequest {
     @Column(name = "summary", nullable = false)
     private String summary;
 
-    @Lob
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 65535)
     private String description;
 
     @ManyToOne
@@ -30,12 +29,16 @@ public class ServiceRequest {
     private User owner;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @JoinColumn(name = "ou_id")
+    private OrganizationalUnit organizationalUnit;
 
     @ManyToOne
     @JoinColumn(name = "reported_by")
     private User reportedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "status")
+    private ServiceRequestStatus serviceRequestStatus;
 
     @CreationTimestamp
     @Column(name = "created_at")

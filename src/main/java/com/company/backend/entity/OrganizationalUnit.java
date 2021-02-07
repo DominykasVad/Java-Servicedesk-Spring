@@ -22,14 +22,14 @@ public class OrganizationalUnit {
     @Column(name = "ou_name", nullable = false, unique = true)
     private String name;
 
-    @OneToOne(mappedBy = "organizationalUnit")
-    private Company company;
-
     @OneToMany(mappedBy = "organizationalUnit", cascade = CascadeType.PERSIST)
     private Set<Location> locations;
 
     @OneToMany(mappedBy = "organizationalUnit", cascade = CascadeType.PERSIST)
     private Set<ConfigurationItem> configurationItems;
+
+    @OneToMany(mappedBy = "organizationalUnit", cascade = CascadeType.PERSIST)
+    private Set<ServiceRequest> serviceRequests;
 
     @CreationTimestamp
     @Column(name = "created_at")
