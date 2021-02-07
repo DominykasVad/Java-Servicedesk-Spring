@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 // TODO: 2/7/21 Email, phone validation
 @AllArgsConstructor
@@ -33,4 +34,7 @@ public class NewUserDTO {
     private String phone;
 
     private String organizationalUnitId;
+
+    @NotNull
+    private Long role;
 }

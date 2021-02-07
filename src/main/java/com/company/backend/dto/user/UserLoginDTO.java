@@ -12,26 +12,12 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-public class UserDTO {
+public class UserLoginDTO {
 
     private Long id;
 
     private String username;
 
-    private String name;
-
-    private String surname;
-
-    private String email;
-
-    private String phone;
-
-    private String organizationalUnitName;
-
     private Set<RoleDTO> roles;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 
 }
