@@ -3,6 +3,7 @@ package com.company.backend.mapper;
 import com.company.backend.dto.user.NewUserDTO;
 import com.company.backend.dto.user.UpdateUserDTO;
 import com.company.backend.dto.user.UserDTO;
+import com.company.backend.dto.user.UserLoginDTO;
 import com.company.backend.entity.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ public class UserMapper {
 
     public UserDTO convertUserEntityToDTO(User user) {
         return modelMapper.map(user, UserDTO.class);
+    }
+
+    public UserLoginDTO convertUserEntityToUserLoginDTO(User user) {
+        return modelMapper.map(user, UserLoginDTO.class);
     }
 
     public User convertUserDtoToEntity(UserDTO userDTO) {
