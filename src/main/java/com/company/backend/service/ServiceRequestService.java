@@ -2,15 +2,23 @@ package com.company.backend.service;
 
 import com.company.backend.dto.serviceRequest.NewServiceRequestDTO;
 import com.company.backend.dto.serviceRequest.ServiceRequestDTO;
+import com.company.backend.dto.serviceRequest.ServiceRequestOwnershipPOJO;
 import com.company.backend.dto.serviceRequest.UpdateServiceRequestDTO;
 import com.company.backend.entity.ServiceRequest;
+import com.company.backend.entity.User;
 import com.company.backend.exeption.EntityNotFoundException;
+import com.company.backend.exeption.PrincipalNotFoundException;
 import com.company.backend.mapper.ServiceRequestMapper;
 import com.company.backend.repository.ServiceRequestRepository;
+import com.company.backend.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.service.ServiceRegistry;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Slf4j
 @Service
@@ -18,12 +26,13 @@ public class ServiceRequestService {
 
     private ServiceRequestRepository serviceRequestRepository;
     private ServiceRequestMapper serviceRequestMapper;
-    private UserService userService;
 
-    public ServiceRequestService(ServiceRequestRepository serviceRequestRepository, ServiceRequestMapper serviceRequestMapper, UserService userService) {
+    private UserRepository userRepository;
+
+    public ServiceRequestService(ServiceRequestRepository serviceRequestRepository, ServiceRequestMapper serviceRequestMapper, UserRepository userRepository) {
         this.serviceRequestRepository = serviceRequestRepository;
         this.serviceRequestMapper = serviceRequestMapper;
-        this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     public Page<ServiceRequestDTO> getAllServiceRequests(Pageable pageable) {
@@ -41,10 +50,10 @@ public class ServiceRequestService {
         return serviceRequestMapper.convertServiceRequestEntityToDTO(serviceRequest);
     }
 
-    public ServiceRequestDTO createServiceRequest(NewServiceRequestDTO newServiceRequestDTO) {
+    public ServiceRequestDTO createServiceRequest(NewServiceRequestDTO newServiceRequestDTO, Principal principal) {
         ServiceRequest serviceRequest = serviceRequestMapper.convertNewServiceRequestDtoToEntity(newServiceRequestDTO);
-        // TODO: 1/28/21 Set logged in User in reportedBy field
-        serviceRequest.setReportedBy(userService.getUserEntityById(1L));
+        User user = userRepository.findUserByUsernameWithRole(principal.getName()).orElseThrow(() -> new PrincipalNotFoundException(principal));
+        serviceRequest.setReportedBy(user);
         ServiceRequest savedServiceRequest = serviceRequestRepository.save(serviceRequest);
         return serviceRequestMapper.convertServiceRequestEntityToDTO(savedServiceRequest);
     }
@@ -55,8 +64,17 @@ public class ServiceRequestService {
         return serviceRequestMapper.convertServiceRequestEntityToDTO(savedServiceRequest);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteServiceRequest(Long id) {
         log.warn(String.format("User ID: %s Deleted Service Request ID: %s", 1, id));
         serviceRequestRepository.deleteById(id);
+    }
+
+    public void serviceRequestTakeOwnership(ServiceRequestOwnershipPOJO serviceRequestOwnershipPOJO, Principal principal) {
+        Long serviceRequestId = serviceRequestOwnershipPOJO.getId();
+        User user = userRepository.findUserByUsernameWithRole(principal.getName()).orElseThrow(() -> new PrincipalNotFoundException(principal));
+        ServiceRequest serviceRequest = serviceRequestRepository.findById(serviceRequestId).orElseThrow(() -> new EntityNotFoundException(serviceRequestId));
+        serviceRequest.setOwner(user);
+        serviceRequestRepository.save(serviceRequest);
     }
 }

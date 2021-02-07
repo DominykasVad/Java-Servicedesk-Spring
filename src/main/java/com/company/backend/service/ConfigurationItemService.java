@@ -13,6 +13,7 @@ import com.company.backend.repository.ServiceRequestRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -76,6 +77,7 @@ public class ConfigurationItemService {
         return configurationItemMapper.convertConfigurationItemEntityToDTO(savedConfigurationItem);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteConfigurationItem(Long id) {
         log.warn(String.format("User ID: %s Deleted Configuration Item ID: %s", 1, id));
         configurationItemRepository.deleteById(id);
