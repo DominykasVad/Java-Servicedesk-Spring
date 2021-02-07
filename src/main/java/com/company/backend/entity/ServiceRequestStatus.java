@@ -12,28 +12,18 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "companies")
-public class Company {
+@Table(name = "service_request_status")
+public class ServiceRequestStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "address", nullable = false)
-    private String address;
-
-    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
-    private Set<User> employees;
-
-    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "serviceRequestStatus", cascade = CascadeType.PERSIST)
     private Set<ServiceRequest> serviceRequests;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ou_id")
-    private OrganizationalUnit organizationalUnit;
 
     @CreationTimestamp
     @Column(name = "created_at")
