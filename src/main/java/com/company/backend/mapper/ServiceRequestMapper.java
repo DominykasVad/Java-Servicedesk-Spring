@@ -1,7 +1,8 @@
 package com.company.backend.mapper;
 
-import com.company.backend.dto.NewServiceRequestDTO;
-import com.company.backend.dto.ServiceRequestDTO;
+import com.company.backend.dto.serviceRequest.NewServiceRequestDTO;
+import com.company.backend.dto.serviceRequest.ServiceRequestDTO;
+import com.company.backend.dto.serviceRequest.UpdateServiceRequestDTO;
 import com.company.backend.entity.ServiceRequest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class ServiceRequestMapper {
 
     public ServiceRequest convertNewServiceRequestDtoToEntity(NewServiceRequestDTO newServiceRequestDTO) {
         return modelMapper.map(newServiceRequestDTO, ServiceRequest.class);
+    }
+
+    public ServiceRequest convertUpdateServiceRequestDtoToEntity(UpdateServiceRequestDTO updateServiceRequestDTO) {
+        return modelMapper.map(updateServiceRequestDTO, ServiceRequest.class);
     }
 }
