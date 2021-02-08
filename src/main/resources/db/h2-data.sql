@@ -59,10 +59,10 @@ VALUES (CURRENT_TIMESTAMP, 'DECOMMISSIONED', CURRENT_TIMESTAMP),
 
 INSERT INTO configuration_items (description, inventory_number, model, name, serial_number, vendor, location_id, ou_id,
                                  status)
-VALUES ('some description', 'INV123', 'cool model', 'blahblah', 'CN394J392H', 'some vendor', 1, 1, 1),
-       ('some description', 'INV124', 'cool model', 'blahblah2', 'CN394J392F', 'some vendor', 1, 1, 1),
-       ('some description', 'INV125', 'cool model', 'blahblah5', 'CN393J392F', 'some vendor', 1, 1, 1),
-       ('some description', 'INV126', 'cool model', 'blahblah6', 'CN364J392F', 'some vendor', 1, 1, 1);
+VALUES ('Desc 1', 'INV123', 'model 1', 'Name 1', 'CN394J392H', 'Vendor 1', 1, 1, 1),
+       ('Desc 2', 'INV124', 'model 2', 'Name 2', 'CN394J392F', 'Vendor 2', 1, 1, 1),
+       ('Desc 3', 'INV125', 'model 3', 'Name 3', 'CN393J392F', 'Vendor 3', 1, 1, 1),
+       ('Desc 4', 'INV126', 'model 4', 'Name 4', 'CN364J392F', 'Vendor 4', 1, 1, 1);
 
 INSERT INTO ci_sr (ci_id, sr_id)
 VALUES (1, 1),
