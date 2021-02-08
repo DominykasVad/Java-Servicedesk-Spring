@@ -92,14 +92,12 @@ public class UserService implements UserDetailsService {
         return userMapper.convertUserEntityToDTO(savedUser);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     public UserDTO updateUser(UpdateUserDTO updateUserDTO) {
         User updateServiceRequest = userMapper.convertUpdateUserDtoToEntity(updateUserDTO);
         User savedServiceRequest = userRepository.save(updateServiceRequest);
         return userMapper.convertUserEntityToDTO(savedServiceRequest);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(Long id) {
         log.warn(String.format("User ID: %s Deleted User ID: %s", 1, id));
         userRepository.deleteById(id);

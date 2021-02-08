@@ -63,7 +63,6 @@ public class ServiceRequestService {
         return serviceRequestMapper.convertServiceRequestEntityToDTO(savedServiceRequest);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     public void deleteServiceRequest(Long id) {
         log.warn(String.format("User ID: %s Deleted Service Request ID: %s", 1, id));
         serviceRequestRepository.deleteById(id);
