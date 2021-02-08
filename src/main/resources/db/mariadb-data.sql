@@ -1,15 +1,19 @@
 INSERT INTO users (username, password, name, surname, email, phone)
 VALUES ('admin', '{bcrypt}$2a$12$fvbdZJvjnPV/Mw5TlZ33OeeuyhZMQV2hQYNZy2VjEom/bQgci4wW6', 'name', 'surname',
-        'foo@example.org', '+37062318446');
+        'foo@example.org', '+37062318446'),
+       ('user', '{bcrypt}$2a$12$fvbdZJvjnPV/Mw5TlZ33OeeuyhZMQV2hQYNZy2VjEom/bQgci4wW6', 'names', 'surnames',
+        'bar@example.org', '+37062318436'),
+       ('manager', '{bcrypt}$2a$12$fvbdZJvjnPV/Mw5TlZ33OeeuyhZMQV2hQYNZy2VjEom/bQgci4wW6', 'namea', 'surnamea',
+        'foobar@example.org', '+37062328446');
 
-INSERT INTO ROLE (id, role_name)
+INSERT INTO role (id, role_name)
 VALUES (1, 'ADMIN'),
        (2, 'USER'),
        (3, 'MANAGER'),
        (4, 'HELP_DESK'),
        (5, 'ENGINEER');
 
-INSERT INTO USER_ROLES (user_id, role_id)
+INSERT INTO user_roles (user_id, role_id)
 VALUES (1, 1);
 
 INSERT INTO organizational_units (ou_name)
